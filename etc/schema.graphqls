@@ -1,0 +1,26 @@
+type Query {
+    supplier(
+        search: String @doc(description: "Performs a full-text search using the specified key words."),
+        filter: SupplierFilterInput @doc(description: "Identifies which colomns to search for and return."),
+        pageSize: Int = 6 @doc(description: "Specifies the maximum number of results to return at once. This attribute is optional."),
+        currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1.")
+    ): SupplierData @resolver(class: "Abhinay\\Supplier\\Model\\Resolver\\CustomGraphql") @doc(description: "The supplier query returns the supplier according to passed arguments(search text, filter)")
+}
+
+input SupplierFilterInput @doc(description: "SupplierFilterInput defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.") {
+    id: FilterTypeInput @doc(description: "The supplier Monthly Archive to filter")
+    email:FilterTypeInput @doc(description: "The supplier Category to filter.")
+}
+
+type SupplierData @doc(description: "The Supplier Data  is the top-level object returned in a supplier search") {
+    total_count: Int @doc(description: "Total count")
+    total_pages: Int @doc(description: "Total count")
+    supplierList: [Suppliers]
+}
+
+type Suppliers @doc(description: "The Supplier object is the top-level object returned in a supplier search") {
+    id: Int @doc(description: "ID of the supplier")
+    name:String @doc(description: "Name of the supplier")
+    email: String @doc(description: "Email of the supplier")
+    phone: String @doc(description: "Phone of the supplier")
+}

@@ -1,0 +1,13 @@
+{
+    "supplier": {
+        "column": {
+            "id": true,
+            "name": true,
+            "email": true,
+            "phone": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

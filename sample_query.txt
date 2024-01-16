@@ -1,0 +1,21 @@
+
+query {
+ supplier(
+      search: ""
+      filter: {
+            id: {eq: ""}
+            email: {eq: ""}
+            }
+      pageSize: 3
+      currentPage: 1
+ ){
+   total_count
+   total_pages
+   supplierList{
+       id
+       name
+       email
+       phone
+   }
+ }
+}
